@@ -1,0 +1,46 @@
+1 - Objetivo do projeto
+
+    Elaborar um servidor com express que servirá para conectar um
+    sistema de atendimento de PetShop ao banco de dados, usando Node e Express.
+
+2 - Bibliotecas em uso:
+
+    2.1- express - servidor http propriamente dito;
+
+    2.2- nodemon - biblioteca instalado no ambiente de desenvolvimento que faz
+    com que o servidor reinicie automaticamente toda vez que é feita uma alteração
+    no projeto. Basta usá-lo no script "start" para iniciar o servidor:
+     "start": "nodemon index.js";
+
+    2.3- consign - agrupa todas as rotas que forem sendo incluídas no projeto dentro
+    de app. Para utilizarmos o consign da maneira correta, precisaremos inserir a 
+    pasta de controllers e todos os módulos que ela contém para que eles possam ser 
+    acessados pelo app.
+
+    2.4- body-parser - interpretador que faz um parser do corpo da requisição, de maneira
+    que seja possível usar suas informações no sistema.
+
+    2.5- mysql - viabiliza a conexão com o banco de dados mysql.
+
+    2.6- moment - biblioteca de manipulação de datas para cálculo, formatação, etc.
+
+3 - Módulos:
+
+    3.1- index.js - arquivo de entrada do servidor, responsável unica e exclusivamente
+    de rodar e atualizar o servidor, conforme configurado em customExpress.js.
+
+    3.2- ./config/customExpress.js - configura o servidor na variável app, monitora com o consign e
+    retorna o próprio app para ser usado em index.js
+
+    3.3- ./controllers/atendimento.js - módulo responsável por gerenciar as rotas recebendo e enviando
+    dados da aplicação, e executando os métodos contidos na classe Atendimentos (./models/atendimentos.js).
+
+    3.4- ./infraestrutura/conexao.js - efetua e exporta a conexão com o BD mysql, mantendo os
+    dados do login encapsulados na módulo.
+
+    3.5- ./infraestrutura/tabelas.js - reponsável pela criação da tabela, quando a API for executada pela
+    primeira vez no servidor. Caso seja necessário acrescentar nova tabela, deve ser incluída neste módulo.
+
+    3.6- ./models/atendimentos.js - contem as regras de negócio, onde estão os métodos usados nas requisições
+    para adicionar, listar, alterar e deletar registros no banco de dados.
+
